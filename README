@@ -1,16 +1,20 @@
-certencryption
+Library to do RSA based encryption for Puppet
 
-This is the certencryption module.
+There are 4 methods:
 
-License
--------
-
-
-Contact
--------
+encrypt(the rsa key, the file)
+decrypt(the rsa key, the file)
+encryptstring(the rsa key, the string)
+decryptstring(the rsa key, the string)
 
 
-Support
--------
+Sample code
+______
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+require 'puppet'
+require 'puppet/util/certencryption'
+a=Puppet::Util::Certencryption.new
+moo = a.encryptstring('/etc/puppetlabs/puppet/ssl/private_keys/puppet1.spence.org.uk.local.pem','moo')
+puts moo
+tard = a.decryptstring('/etc/puppetlabs/puppet/ssl/private_keys/puppet1.spence.org.uk.local.pem',moo)
+puts tard
