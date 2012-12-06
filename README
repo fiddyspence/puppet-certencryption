@@ -1,20 +1,22 @@
+Puppet::Util::Certencryption library to use SSL certs to encrypt/decrypt data
+
 Library to do RSA based encryption for Puppet
 
 There are 4 methods:
 
-encrypt(the rsa key, the file)
-decrypt(the rsa key, the file)
-encryptstring(the rsa key, the string)
-decryptstring(the rsa key, the string)
+- encrypt(the rsa key, the file)
+- decrypt(the rsa key, the file)
+- encryptstring(the rsa key, the string)
+- decryptstring(the rsa key, the string)
 
 
 Sample code
-______
+-----------
 
-require 'puppet'
-require 'puppet/util/certencryption'
-a=Puppet::Util::Certencryption.new
-moo = a.encryptstring('/etc/puppetlabs/puppet/ssl/private_keys/puppet1.spence.org.uk.local.pem','moo')
-puts moo
-tard = a.decryptstring('/etc/puppetlabs/puppet/ssl/private_keys/puppet1.spence.org.uk.local.pem',moo)
-puts tard
+    require 'puppet'
+    require 'puppet/util/certencryption'
+    a=Puppet::Util::Certencryption.new
+    moo = a.encryptstring('/etc/puppetlabs/puppet/ssl/private_keys/puppet1.spence.org.uk.local.pem','moo')
+    puts moo
+    clear = a.decryptstring('/etc/puppetlabs/puppet/ssl/private_keys/puppet1.spence.org.uk.local.pem',moo)
+    puts clear
