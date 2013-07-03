@@ -9,6 +9,8 @@ There are 4 methods:
 - encryptstring(the rsa key, the string)
 - decryptstring(the rsa key, the string)
 
+Also included are a parser function (decrypt()) and a fact demonstrating how to pass data around
+
 Sample Puppet code
 -----------
 
