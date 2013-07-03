@@ -9,8 +9,15 @@ There are 4 methods:
 - encryptstring(the rsa key, the string)
 - decryptstring(the rsa key, the string)
 
+Sample Puppet code
+-----------
 
-Sample code
+    class foo {
+      $foovar = decrypt('/etc/foo/privatekey.pem',$::theencryptedfact_or_data')
+      notify { $foovar: }
+    }
+
+Sample ruby code
 -----------
 
     require 'puppet'
