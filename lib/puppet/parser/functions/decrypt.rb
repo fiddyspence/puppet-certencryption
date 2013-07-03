@@ -1,15 +1,19 @@
 module Puppet::Parser::Functions
 
   newfunction(:decrypt, :type => :rvalue, :doc => <<-'ENDHEREDOC') do |args|
-      Wait.
+      A function to decrypt data previously encrypted with fiddyspence/certencryption
+
+      Usage:
+      decrypt('/etc/puppetlabs/puppet/ssl/private_keys/thekey.pem',$::theencryptedfact')
 
     ENDHEREDOC
     require 'puppet/util/certencryption'
     require 'base64'
+
     raise Puppet::ParseError, ("decrypt(): Wrong number of arguments (#{args.length}; must be = 2)") unless args.length == 2
 
-    unless (args[0].is_a?(String))
-      raise Puppet::ParseError, ("decrypt(): please pass a string, or an array of strings - what you passed didn't work for me at all - #{args[0].class}")
+    unless (File.exists?(args[0]))
+      raise Puppet::ParseError, ("decrypt(): The private key #{args[0]} appears not to exist")
     end
 
     begin
