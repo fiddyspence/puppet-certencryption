@@ -18,7 +18,7 @@ module Puppet::Parser::Functions
 
     begin
       a=Puppet::Util::Certencryption.new
-      retval = a.decryptstring(args[0],Base64.decode64(args[1]))
+      retval = a.decryptstring(args[0],args[1])
     rescue => e
       raise Puppet::ParseError, ("decrypt(): sorry: " + e.message )
     end
