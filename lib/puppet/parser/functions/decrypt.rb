@@ -4,7 +4,7 @@ module Puppet::Parser::Functions
       A function to decrypt data previously encrypted with fiddyspence/certencryption
 
       Usage:
-      decrypt('/etc/puppetlabs/puppet/ssl/private_keys/thekey.pem',$::theencryptedfact')
+      decrypt('/etc/puppetlabs/puppet/ssl/private_keys/thekey.pem', $::theencryptedfact)
 
     ENDHEREDOC
     require 'puppet/util/certencryption'
