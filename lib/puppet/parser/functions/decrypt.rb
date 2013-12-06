@@ -4,7 +4,7 @@ module Puppet::Parser::Functions
       A function to decrypt data previously encrypted with fiddyspence/certencryption
 
       Usage:
-      decrypt('/etc/puppetlabs/puppet/ssl/private_keys/thekey.pem',$::theencryptedfact')
+      decrypt('/etc/puppetlabs/puppet/ssl/private_keys/thekey.pem', $::theencryptedfact)
 
     ENDHEREDOC
     require 'puppet/util/certencryption'
@@ -18,7 +18,7 @@ module Puppet::Parser::Functions
 
     begin
       a=Puppet::Util::Certencryption.new
-      retval = a.decryptstring(args[0],Base64.decode64(args[1]))
+      retval = a.decryptstring(args[0],args[1])
     rescue => e
       raise Puppet::ParseError, ("decrypt(): sorry: " + e.message )
     end
