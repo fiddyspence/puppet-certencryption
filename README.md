@@ -11,11 +11,13 @@ There are 4 methods:
 
 Also included are a parser function (decrypt()) and a fact demonstrating how to pass data around
 
-Sample Puppet code
+Sample Puppet code to use an encrypted fact
 -----------
 
+This example uses the sample `encfact` fact in the lib/facter directory of this repo:
+
     class foo {
-      $foovar = decrypt('/etc/foo/privatekey.pem',$::theencryptedfact_or_data')
+      $foovar = decrypt('/etc/foo/privatekey.pem',$::encfact')
       notify { $foovar: }
     }
 
